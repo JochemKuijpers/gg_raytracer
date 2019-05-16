@@ -1,3 +1,20 @@
+# Interactive Raytrace Renderer
+
+This project is an interactive raytrace renderer. It was made as a Java code sample and demo as part of my Guerrilla Games application.
+
+It has the following features:
+
+- Multithreaded CPU rendering.
+- Three render passes of increasing quality to allow for responsive interactions.
+- Recursive ray tracing.
+- Diffuse materials with hard shadows by a directional light.
+- Reflective materials.
+- Refractive materials.
+- Fresnel reflections (reflections on transparent objects).
+- Semi-translucent objects that absorbs some light that travels through it.
+- Gamma correction and dithering to avoid color-banding.
+- GUI / resizable window that displays the frame buffer.
+
 # How to build
 
 This project is easily build using Maven. Make sure Maven and a Java 8 SDK are installed, open a command line on this directory and run
@@ -12,28 +29,13 @@ From a command-line, run:
 
     $ java -jar target/gg_raytracer-1.0-SNAPSHOT-jar-with-dependencies.jar
 
-# What is it?
-
-This project is an interactive ray trace renderer. It has the following features:
-
-- Multithreaded CPU rendering.
-- Three render passes of increasing quality to allow for responsive interactions.
-- Recursive ray tracing.
-- Diffuse materials with hard shadows by a directional light.
-- Reflective materials.
-- Refractive materials.
-- Fresnel reflections (reflections on transparent objects).
-- Semi-translucent objects that absorbs some light that travels through it.
-- Gamma correction and dithering to avoid color-banding.
-- GUI / resizable window that displays the frame buffer.
-
 # How does it work?
 
 Rays are cast into a scene of geometric objects. Intersections with these objects are computed and based on the geometry of the object, and the material assigned to the object, successive rays may be cast for reflection, refraction and light visibility computations.
 
 ## In more detail
 
-The Camera-object partitions the framebuffer into small RenderTiles. New Jobs are created to render these tiles in three render phases of increasing quality. These jobs are added to a queue and worker threads pick up these jobs to execute them.
+The Camera object partitions the framebuffer into small RenderTiles. New Jobs are created to render these tiles in three render phases of increasing quality. These jobs are added to a queue and worker threads pick up these jobs to execute them.
 
 When a RenderTile is being rendered, it computes which rays to cast into the scene. It then queries the Scene object which colors are associated with the rays. The Scene object in turn queries Shape objects what their intersection and color is. The Scene object returns the color of the closest object.
 
