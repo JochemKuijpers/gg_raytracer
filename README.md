@@ -1,6 +1,6 @@
 # Interactive Raytrace Renderer
 
-This project is an interactive raytrace renderer. It was made as a Java code sample and demo as part of my Guerrilla Games application.
+This project is an interactive raytrace renderer. It was made as a Java code sample and demo as part of my application at Guerrilla.
 
 It has the following features:
 
